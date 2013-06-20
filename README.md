@@ -1,7 +1,7 @@
 Dockmaster
 ==========
 
-Docmaster is a vhost middleware router for Distribute that uses Seaport to intelligently route requests.
+Dockmaster is a vhost middleware router for Distribute that uses Seaport to intelligently route requests.
 
 Usage
 -------
