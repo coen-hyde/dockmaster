@@ -1,7 +1,7 @@
 {
   "name": "dockmaster",
   "version": "0.1.0",
-  "description": "Vhost Distribute middleware that uses Seaport to intelligently route requests",
+  "description": "Vhost middleware router for Distribute that uses Seaport to intelligently route requests",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec  --timeout 30s test/*"
