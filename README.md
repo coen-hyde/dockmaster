@@ -6,7 +6,7 @@ Docmaster is a vhost middleware router for Distribute that uses Seaport to intel
 Usage
 -------
 
-*** Router
+***Router
 ```js
 var http = require('http')
   , distribute = require('distribute')
@@ -31,7 +31,7 @@ var router = distribute(httpServer);
 router.use(dockmaster(ports));
 ```
 
-*** Applications
+***Applications
 For the above route to an apps you will need to register your applications with Seaport. As so:
 
 ```js
