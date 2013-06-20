@@ -1,6 +1,6 @@
 {
   "name": "dockmaster",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Vhost middleware router for Distribute that uses Seaport to intelligently route requests",
   "main": "index.js",
   "scripts": {
