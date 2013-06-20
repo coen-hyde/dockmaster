@@ -40,18 +40,18 @@ var http = require('http')
   , seaport = require('seaport');
 
 // Connect to the Seaport server
-var ports = require('seaport').connect(5000)
+var ports = require('seaport').connect(5000);
 
 // Create your app and register it with Seaport
 var app = express();
-app.listen(ports.register('router', {host: 'myvhost.domain'}));
+app.listen(ports.register('router', { serverName: 'myvhost.domain' }));
 ```
 
 You can also mount applications on paths so you can have multiple applications sharing the same domain.
 
 ```js
 var app = express();
-app.listen(ports.register('router', { host: 'myvhost.domain', path: '/admin' }));
+app.listen(ports.register('router', { serverName: 'myvhost.domain', mount: '/admin' }));
 ```
 
 License
