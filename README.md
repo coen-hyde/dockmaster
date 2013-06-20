@@ -1,7 +1,7 @@
 Dockmaster
 ==========
 
-Docmaster is a vhost middleware router for Distribute that uses Seaport to intelligently route requests.
+Dockmaster is a vhost middleware router for Distribute that uses Seaport to intelligently route requests.
 
 Usage
 -------
@@ -11,7 +11,7 @@ Usage
 var http = require('http')
   , distribute = require('distribute')
   , seaport = require('seaport')
-  , dockmaster = require('docmaster');
+  , dockmaster = require('dockmaster');
 
 // Connect to the Seaport server
 var ports = require('seaport').connect(5000);
