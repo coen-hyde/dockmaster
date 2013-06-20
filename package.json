@@ -1,0 +1,25 @@
+{
+  "name": "dockmaster",
+  "version": "0.1.0",
+  "description": "Vhost Distribute middleware that uses Seaport to intelligently route requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coen-hyde/dockmaster.git"
+  },
+  "keywords": [
+    "Distribute",
+    "Seaport",
+    "Vhost",
+    "router",
+    "middleware"
+  ],
+  "author": "Coen Hyde",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/coen-hyde/dockmaster/issues"
+  }
+}
