@@ -3,9 +3,10 @@ Dockmaster
 
 Docmaster is a vhost middleware router for Distribute that uses Seaport to intelligently route requests.
 
-Example
+Usage
 -------
 
+### Router
 ```js
 var http = require('http')
   , distribute = require('distribute')
@@ -18,7 +19,7 @@ var ports = require('seaport').connect(5000);
 /*
  * Create the httpServer and register it with Seaport. 
  * The noroute attribute passed to seaport will prevent Docmaster routing to it's self.
-/*
+ */
 var httpServer = http.createServer().listen(
   ports.register('router', {noroute: true})
 );
@@ -30,7 +31,8 @@ var router = distribute(httpServer);
 router.use(dockmaster(ports));
 ```
 
-For the above route to an apps you will need to register your applications with Seaport. As so:
+### Applications
+For the above router to route to your apps you will need to register your applications with Seaport. As so:
 
 ```js
 var http = require('http')
@@ -45,7 +47,7 @@ var app = express();
 app.listen(ports.register('router', {host: 'myvhost.domain'}));
 ```
 
-You can also mount application on paths so you can have multiple applications sharing the same domain.
+You can also mount applications on paths so you can have multiple applications sharing the same domain.
 
 ```js
 var app = express();
