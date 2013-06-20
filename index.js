@@ -9,29 +9,17 @@ module.exports = dockmaster = function(ports) {
 
     // Find matching services via host header and sort by path
     var matchingServices = _.sortBy(_.filter(services, function(service) {
-      if (!service.vhost) {
-        return false;
-      }
-      var vhost = service.vhost;
-      return (!vhost.noroute && !!vhost.serverName && req.headers.host.split(':')[0] === vhost.serverName);
-    }), function(service) {
-      if (!service.vhost.mount) {
-        return 0;
-      }
-
-      return -service.vhost.mount.length; 
-    });
+      return (!service.noroute && !!service.serverName && req.headers.host.split(':')[0] === service.serverName);
+    }), 'mount');
 
     // Find the first matching app via path
     var matchingService = _.find(matchingServices, function(service) {
-      var vhost = service.vhost;
-
-      if (!vhost.mount) {
+      if (!service.mount) {
         return true;
       }
 
-      if (!!vhost.mount && req.url.substr(0, vhost.mount.length) === vhost.mount) {
-        req.url = req.url.substr(vhost.mount.length);
+      if (!!service.mount && req.url.substr(0, service.mount.length) === service.mount) {
+        req.url = req.url.substr(service.mount.length);
         return true;
       }
     });

@@ -16,30 +16,22 @@ describe('Dockmaster', function() {
     // Create some services that connect to seaport
     var clientMeta = [
       {
-        role: 'frontend',
-        vhost: {
-          serverName: 'domain.test'
-        }
-      },
-      {
-        role: 'admin',
-        vhost: {
-          serverName: 'domain.test',
-          mount: '/admin'
-        }
-      },
-      {
-        role: 'api',
-        vhost: {
-          serverName: 'domain.test',
-          mount: '/api'
-        }
-      },
-      {
-        role: 'assets',
-        vhost: {
-          serverName: 'assets.domain.test',
-        }
+        role: 'frontend'
+      , serverName: 'domain.test'
+      }
+    , {
+        role: 'admin'
+      , serverName: 'domain.test'
+      , mount: '/admin'
+      }
+    , {
+        role: 'api'
+      , serverName: 'domain.test'
+      , mount: '/api'
+      }
+    , {
+        role: 'assets'
+      , serverName: 'assets.domain.test'
       }
     ]
 
@@ -53,7 +45,7 @@ describe('Dockmaster', function() {
       });
 
       services.push(service);
-    }, function() {setTimeout(done, 100)});
+    }, setTimeout.bind(null, done, 100));
   });
 
   var makeNext = function(service, cb) {
