@@ -40,7 +40,7 @@ var http = require('http')
   , seaport = require('seaport');
 
 // Connect to the Seaport server
-var ports = require('seaport').connect(5000)
+var ports = require('seaport').connect(5000);
 
 // Create your app and register it with Seaport
 var app = express();
