@@ -32,7 +32,7 @@ router.use(dockmaster(ports));
 ```
 
 ### Applications
-For the above route to an apps you will need to register your applications with Seaport. As so:
+For the above router to route to your apps you will need to register your applications with Seaport. As so:
 
 ```js
 var http = require('http')
@@ -47,7 +47,7 @@ var app = express();
 app.listen(ports.register('router', {host: 'myvhost.domain'}));
 ```
 
-You can also mount application on paths so you can have multiple applications sharing the same domain.
+You can also mount applications on paths so you can have multiple applications sharing the same domain.
 
 ```js
 var app = express();
