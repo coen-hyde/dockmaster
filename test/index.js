@@ -17,21 +17,21 @@ describe('Dockmaster', function() {
     var clientMeta = [
       {
         role: 'frontend'
-      , host: 'domain.test'
+      , serverName: 'domain.test'
       }
     , {
         role: 'admin'
-      , host: 'frontend.test'
-      , path: '/admin'
+      , serverName: 'domain.test'
+      , mount: '/admin'
       }
     , {
         role: 'api'
-      , host: 'domain.test'
-      , path: '/api'
+      , serverName: 'domain.test'
+      , mount: '/api'
       }
     , {
         role: 'assets'
-      , host: 'assets.domain.test'
+      , serverName: 'assets.domain.test'
       }
     ]
 
@@ -45,7 +45,7 @@ describe('Dockmaster', function() {
       });
 
       services.push(service);
-    }, done);
+    }, setTimeout.bind(null, done, 100));
   });
 
   var makeNext = function(service, cb) {
