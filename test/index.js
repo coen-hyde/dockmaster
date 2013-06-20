@@ -16,22 +16,30 @@ describe('Dockmaster', function() {
     // Create some services that connect to seaport
     var clientMeta = [
       {
-        role: 'frontend'
-      , host: 'domain.test'
-      }
-    , {
-        role: 'admin'
-      , host: 'frontend.test'
-      , path: '/admin'
-      }
-    , {
-        role: 'api'
-      , host: 'domain.test'
-      , path: '/api'
-      }
-    , {
-        role: 'assets'
-      , host: 'assets.domain.test'
+        role: 'frontend',
+        vhost: {
+          serverName: 'domain.test'
+        }
+      },
+      {
+        role: 'admin',
+        vhost: {
+          serverName: 'domain.test',
+          mount: '/admin'
+        }
+      },
+      {
+        role: 'api',
+        vhost: {
+          serverName: 'domain.test',
+          mount: '/api'
+        }
+      },
+      {
+        role: 'assets',
+        vhost: {
+          serverName: 'assets.domain.test',
+        }
       }
     ]
 
@@ -40,12 +48,12 @@ describe('Dockmaster', function() {
     async.forEach(clientMeta, function(client, next) {
       var service = seaport.connect(masterSeaport);
       service.register(client.role, client); 
-      service.on('host', function(){
+      service.on('host', function() {
         next();
       });
 
       services.push(service);
-    }, done);
+    }, function() {setTimeout(done, 100)});
   });
 
   var makeNext = function(service, cb) {
