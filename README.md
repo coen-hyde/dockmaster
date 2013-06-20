@@ -11,7 +11,7 @@ Usage
 var http = require('http')
   , distribute = require('distribute')
   , seaport = require('seaport')
-  , dockmaster = require('docmaster');
+  , dockmaster = require('dockmaster');
 
 // Connect to the Seaport server
 var ports = require('seaport').connect(5000);
