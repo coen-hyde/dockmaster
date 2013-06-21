@@ -18,7 +18,7 @@ var ports = require('seaport').connect(5000);
 
 /*
  * Create the httpServer and register it with Seaport. 
- * The noroute attribute passed to seaport will prevent Docmaster routing to it's self.
+ * The noroute attribute passed to seaport will prevent Docmaster routing to its self.
  */
 var httpServer = http.createServer().listen(
   ports.register('router', {noroute: true})
