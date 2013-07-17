@@ -3,6 +3,8 @@ Dockmaster
 
 Dockmaster is a vhost middleware router for Distribute that uses Seaport to intelligently route requests.
 
+![npm tag](https://nodei.co/npm/dockmaster.png)
+
 Usage
 -------
 
