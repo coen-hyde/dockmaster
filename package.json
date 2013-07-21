@@ -18,7 +18,7 @@
     "middleware"
   ],
   "author": "Coen Hyde",
-  "license": "BSD",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/coen-hyde/dockmaster/issues"
   },
