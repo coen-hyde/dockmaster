@@ -17,21 +17,31 @@ describe('Dockmaster', function() {
     var clientMeta = [
       {
         role: 'frontend'
-      , serverName: 'domain.test'
+      , domains: ['domain.test']
       }
     , {
         role: 'admin'
-      , serverName: 'domain.test'
+      , domains: ['domain.test']
       , mount: '/admin'
       }
     , {
         role: 'api'
-      , serverName: 'domain.test'
+      , domains: ['domain.test']
       , mount: '/api'
       }
     , {
         role: 'assets'
-      , serverName: 'assets.domain.test'
+      , domains: ['assets.domain.test']
+      }
+    , {
+        role: 'postal-1'
+      , mount: '/path'
+      , domains: ['postal.domain.test']
+      }
+    , {
+        role: 'postal-2'
+      , mount: '/path'
+      , domains: ['postal.domain.test']
       }
     ]
 
@@ -94,4 +104,46 @@ describe('Dockmaster', function() {
 
     dockmaster(services[0])(req, res, next);
   });
+
+  it('should randomly select service matching service when there are more than one matching service', function(done) {
+    var count = {}
+      , middleware = dockmaster(services[0])
+      , loops = [];
+
+    // Select a service 1000 times and see if random selection distributes service selection enough
+    for (var i = 0; i < 1000; i++) {
+      loops.push(function(next) {
+        var req = function() {}
+          , res = function() {};
+
+        _.extend(req, {
+          'headers': {'host': 'postal.domain.test'}
+        , 'url': '/path'
+        });
+
+        middleware(req, res, function(port) {
+          service = _.find(services[0].services.toJSON(), function(service) {
+            return (service.port === port)
+          });
+
+          if (typeof count[service.role] === 'undefined') {
+            count[service.role] = 1
+          }
+          else {
+            count[service.role]++;
+          }
+
+          next();
+        });
+      });
+    }
+
+    async.parallel(loops, function() {
+      count['postal-1'].should.be.above(400);
+      count['postal-1'].should.be.below(600);
+      count['postal-2'].should.be.above(400);
+      count['postal-2'].should.be.below(600);
+      done();
+    });
+  })
 });
